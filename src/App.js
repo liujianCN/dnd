@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const inp = (Com) => {
+  return class InputHOC extends Component {
+    constructor() {
+      super();
+      this.state = {
+        value: ''
+      }
+    }
+    handleChange = (e) => {
+      this.setState({
+        value: e.target.value
+      })
+    }
+    
+    componentDidMount() {
+      
+    }
+    
+    render() {
+      const props = {
+        value: this.state.value,
+        onChange: this.handleChange
+      }
+      return <Com {...props} />
+    }
+  }
 }
 
-export default App;
+class Input extends Component {
+  render() {
+    return <input {...this.props} />
+  }
+}
+
+export default inp(Input);
