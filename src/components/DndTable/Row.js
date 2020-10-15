@@ -2,10 +2,11 @@ import React from "react";
 import { useDrag, useDrop } from "react-dnd";
 import "./index.css";
 
-const type = "DragableBodyRow";
-
-export default ({ index, moveRow, className, style, ...restProps }) => {
+export default ({ record, index, moveRow, className, style, ...restProps }) => {
   const ref = React.useRef();
+
+  //根据置顶🔝状态不同设置不同的type
+  const type = record.top ? "DragableBodyTopRow" : "DragableBodyRow"
   const [{ isOver, dropClassName }, drop] = useDrop({
     accept: type,
     collect: (monitor) => {

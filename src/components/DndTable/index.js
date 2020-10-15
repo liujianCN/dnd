@@ -36,7 +36,8 @@ class DndTable extends Component {
               row: Row,
             },
           }}
-          onRow={(_, index) => ({
+          onRow={(record, index) => ({
+            record,
             index,
             moveRow: this.moveRow,
           })}
