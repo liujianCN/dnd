@@ -1,5 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch, NavLink } from "react-router-dom";
+import { Menu } from 'antd';
 
 import Vertical from "./beautiful-dnd/base";
 import Horizontal from "./beautiful-dnd/horizontal";
@@ -8,7 +9,8 @@ import Performance from "./beautiful-dnd/performance";
 import Grid from "./beautiful-dnd/grid";
 
 // dnd
-import Dnd from "./dnd/index";
+import DndTarget from "./dnd/target";
+import DndGame from "./dnd/game";
 
 // antd
 import TableDnd from "./antd/table-dnd";
@@ -16,6 +18,9 @@ import TableDnd from "./antd/table-dnd";
 // react-sortable-hoc
 import RshBasic from "./react-sortable-hoc/basic";
 import RshBasicHandle from "./react-sortable-hoc/drag-handle";
+
+
+const { SubMenu } = Menu
 
 const routers = [
   {
@@ -46,7 +51,18 @@ const routers = [
   {
     path: "/dnd",
     title: "Dnd",
-    component: Dnd,
+    children: [
+      {
+        path: "/dnd-target",
+        title: "Dnd-Target",
+        component: DndTarget,
+      },
+      {
+        path: "/dnd-game",
+        title: "Dnd-Game",
+        component: DndGame,
+      },
+    ],
   },
   {
     path: "/antd",
@@ -77,14 +93,18 @@ const routers = [
   },
 ];
 
-const renderLink = (list ,hasChildren, parentPath) =>
-  list.map(({ path, title, children }, i) =>
+const renderLink = (list) =>
+  list.map(({ path, title, children }) =>
     children ? (
-      renderLink(children, true, title)
+      <SubMenu key={path} title={title}>
+        {renderLink(children)}
+      </SubMenu>
     ) : (
-      <NavLink key={path} to={path}>
-      {hasChildren && `${parentPath}`}{title} {i !== list.length - 1 && "---"}
-      </NavLink>
+      <Menu.Item  key={path}>
+        <NavLink to={path}>
+          {title}
+        </NavLink>
+      </Menu.Item>
     )
   );
 
@@ -100,7 +120,7 @@ const renderRoute = (list) =>
 export default (props) => {
   return (
     <Router>
-      <div>{renderLink(routers)}</div>
+      <Menu mode="horizontal" style={{marginBottom: 50}}>{renderLink(routers)}</Menu>
       <Switch>{renderRoute(routers)}</Switch>
     </Router>
   );
