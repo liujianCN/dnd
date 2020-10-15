@@ -1,6 +1,6 @@
 import React from "react";
 import { HashRouter as Router, Route, Switch, NavLink } from "react-router-dom";
-import { Menu } from 'antd';
+import { Menu } from "antd";
 
 import Vertical from "./beautiful-dnd/base";
 import Horizontal from "./beautiful-dnd/horizontal";
@@ -11,42 +11,46 @@ import Grid from "./beautiful-dnd/grid";
 // dnd
 import DndTarget from "./dnd/target";
 import DndGame from "./dnd/game";
-
-// antd
-import TableDnd from "./antd/table-dnd";
+import TableDnd from "./dnd/table-dnd";
 
 // react-sortable-hoc
 import RshBasic from "./react-sortable-hoc/basic";
 import RshBasicHandle from "./react-sortable-hoc/drag-handle";
+import RshTableSort from "./react-sortable-hoc/table";
 
-
-const { SubMenu } = Menu
+const { SubMenu } = Menu;
 
 const routers = [
   {
-    path: "/v",
-    title: "Vertical",
-    component: Vertical,
-  },
-  {
-    path: "/h",
-    title: "Horizontal",
-    component: Horizontal,
-  },
-  {
-    path: "/m",
-    title: "MoveColumn",
-    component: MoveColumn,
-  },
-  {
-    path: "/p",
-    title: "Performance",
-    component: Performance,
-  },
-  {
-    path: "/g",
-    title: "Grid",
-    component: Grid,
+    path: "/beautiful-dnd",
+    title: "Beautiful-dnd",
+    children: [
+      {
+        path: "/v",
+        title: "Vertical",
+        component: Vertical,
+      },
+      {
+        path: "/h",
+        title: "Horizontal",
+        component: Horizontal,
+      },
+      {
+        path: "/m",
+        title: "MoveColumn",
+        component: MoveColumn,
+      },
+      {
+        path: "/p",
+        title: "Performance",
+        component: Performance,
+      },
+      {
+        path: "/g",
+        title: "Grid",
+        component: Grid,
+      },
+    ],
   },
   {
     path: "/dnd",
@@ -62,12 +66,6 @@ const routers = [
         title: "Dnd-Game",
         component: DndGame,
       },
-    ],
-  },
-  {
-    path: "/antd",
-    title: "Antd",
-    children: [
       {
         path: "/table-dnd",
         title: "TableDnd",
@@ -75,6 +73,11 @@ const routers = [
       },
     ],
   },
+  // {
+  //   path: "/antd",
+  //   title: "Antd",
+
+  // },
   {
     path: "/rsh",
     title: "Rsh",
@@ -89,6 +92,11 @@ const routers = [
         title: "BasicHandle",
         component: RshBasicHandle,
       },
+      {
+        path: "/rsh-table-sort",
+        title: "TableSort",
+        component: RshTableSort,
+      },
     ],
   },
 ];
@@ -100,10 +108,8 @@ const renderLink = (list) =>
         {renderLink(children)}
       </SubMenu>
     ) : (
-      <Menu.Item  key={path}>
-        <NavLink to={path}>
-          {title}
-        </NavLink>
+      <Menu.Item key={path}>
+        <NavLink to={path}>{title}</NavLink>
       </Menu.Item>
     )
   );
@@ -120,7 +126,9 @@ const renderRoute = (list) =>
 export default (props) => {
   return (
     <Router>
-      <Menu mode="horizontal" style={{marginBottom: 50}}>{renderLink(routers)}</Menu>
+      <Menu mode="horizontal" style={{ marginBottom: 50 }}>
+        {renderLink(routers)}
+      </Menu>
       <Switch>{renderRoute(routers)}</Switch>
     </Router>
   );
