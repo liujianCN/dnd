@@ -2,18 +2,19 @@ import React from "react";
 import { HashRouter as Router, Route, Switch, NavLink } from "react-router-dom";
 import { Menu } from "antd";
 
+// dnd
+import DndTarget from "./dnd/target";
+import DndGame from "./dnd/game";
+import DndTable from "./dnd/table-dnd";
+
+// beautiful-dnd
 import Vertical from "./beautiful-dnd/base";
 import Horizontal from "./beautiful-dnd/horizontal";
 import MoveColumn from "./beautiful-dnd/columnMove";
 import Performance from "./beautiful-dnd/performance";
-import Grid from "./beautiful-dnd/grid";
+// import Grid from "./beautiful-dnd/grid";
 
-// dnd
-import DndTarget from "./dnd/target";
-import DndGame from "./dnd/game";
-import TableDnd from "./dnd/table-dnd";
-
-// react-sortable-hoc
+// sortable-hoc
 import RshBasic from "./react-sortable-hoc/basic";
 import RshBasicHandle from "./react-sortable-hoc/drag-handle";
 import RshTableSort from "./react-sortable-hoc/table";
@@ -22,79 +23,69 @@ const { SubMenu } = Menu;
 
 const routers = [
   {
-    path: "/beautiful-dnd",
-    title: "Beautiful-dnd",
-    children: [
-      {
-        path: "/v",
-        title: "Vertical",
-        component: Vertical,
-      },
-      {
-        path: "/h",
-        title: "Horizontal",
-        component: Horizontal,
-      },
-      {
-        path: "/m",
-        title: "MoveColumn",
-        component: MoveColumn,
-      },
-      {
-        path: "/p",
-        title: "Performance",
-        component: Performance,
-      },
-      {
-        path: "/g",
-        title: "Grid",
-        component: Grid,
-      },
-    ],
-  },
-  {
     path: "/dnd",
-    title: "Dnd",
+    title: "dnd",
     children: [
       {
-        path: "/dnd-target",
-        title: "Dnd-Target",
+        path: "/d-target",
+        title: "target",
         component: DndTarget,
       },
       {
-        path: "/dnd-game",
-        title: "Dnd-Game",
+        path: "/d-game",
+        title: "game",
         component: DndGame,
       },
       {
         path: "/table-dnd",
-        title: "TableDnd",
-        component: TableDnd,
+        title: "table",
+        component: DndTable,
       },
     ],
   },
-  // {
-  //   path: "/antd",
-  //   title: "Antd",
-
-  // },
   {
-    path: "/rsh",
-    title: "Rsh",
+    path: "/beautiful-dnd",
+    title: "beautiful-dnd",
     children: [
       {
-        path: "/basic",
-        title: "Basic",
+        path: "/b-v",
+        title: "vertical",
+        component: Vertical,
+      },
+      {
+        path: "/b-h",
+        title: "horizontal",
+        component: Horizontal,
+      },
+      {
+        path: "/b-m",
+        title: "move-column",
+        component: MoveColumn,
+      },
+      {
+        path: "/b-p",
+        title: "performance",
+        component: Performance,
+      },
+    ],
+  },
+  {
+    path: "/sortable-hoc",
+    title: "sortable-hoc",
+    children: [
+      {
+        path: "/s-basic",
+        title: "basic",
         component: RshBasic,
       },
       {
-        path: "/basic-handle",
-        title: "BasicHandle",
+        path: "/s-basic-handle",
+        title: "basic-handle",
         component: RshBasicHandle,
       },
       {
-        path: "/rsh-table-sort",
-        title: "TableSort",
+        path: "/s-table-sort",
+        title: "table-sort",
         component: RshTableSort,
       },
     ],
