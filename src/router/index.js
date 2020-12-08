@@ -19,6 +19,9 @@ import RshBasic from "./react-sortable-hoc/basic";
 import RshBasicHandle from "./react-sortable-hoc/drag-handle";
 import RshTableSort from "./react-sortable-hoc/table";
 
+// re-resizable
+import ResizeHorizontal from "./resize/horizontal";
+
 const { SubMenu } = Menu;
 
 const routers = [
@@ -87,6 +90,17 @@ const routers = [
         path: "/s-table-sort",
         title: "table-sort",
         component: RshTableSort,
+      },
+    ],
+  },
+  {
+    path: "/re-resizable",
+    title: "re-resizable",
+    children: [
+      {
+        path: "/re-horizontal",
+        title: "horizontal",
+        component: ResizeHorizontal,
       },
     ],
   },

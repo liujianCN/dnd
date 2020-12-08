@@ -4821,6 +4821,11 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.npm.taobao.org/fast-levenshtein/download/fast-levenshtein-2.0.6.tgz?cache=0&sync_timestamp=1595428000133&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffast-levenshtein%2Fdownload%2Ffast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fast-memoize@^2.5.1:
+  version "2.5.2"
+  resolved "https://registry.npm.taobao.org/fast-memoize/download/fast-memoize-2.5.2.tgz#79e3bb6a4ec867ea40ba0e7146816f6cdce9b57e"
+  integrity sha1-eeO7ak7IZ+pAug5xRoFvbNzptX4=
+
 faye-websocket@^0.10.0:
   version "0.10.0"
   resolved "https://registry.npm.taobao.org/faye-websocket/download/faye-websocket-0.10.0.tgz#4e492f8d04dfb6f89003507f6edbf2d501e7c6f4"
@@ -9450,6 +9455,13 @@ rc-virtual-list@^3.0.1, rc-virtual-list@^3.0.3:
     classnames "^2.2.6"
     rc-resize-observer "^0.2.3"
     rc-util "^5.0.7"
+
+re-resizable@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.npm.taobao.org/re-resizable/download/re-resizable-6.7.0.tgz?cache=0&sync_timestamp=1602901725928&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fre-resizable%2Fdownload%2Fre-resizable-6.7.0.tgz#63324f0d2c8cd24fedda6bba5d638bd09c63ee6b"
+  integrity sha1-YzJPDSyM0k/t2mu6XWOL0Jxj7ms=
+  dependencies:
+    fast-memoize "^2.5.1"
 
 react-app-polyfill@^1.0.6:
   version "1.0.6"
